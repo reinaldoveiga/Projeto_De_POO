@@ -1,9 +1,10 @@
 import java.util.List;
 
 public interface GerenciadorDeRoupas {
-public void cadastraRoupas(Roupas r);
+
+	public void cadastraRoupas(Roupas r) throws RoupaInexistenteException;
 	
-	public 	List<Roupas> pesquisaRoupas() throws RoupaInexistenteException;
+	public 	List<Roupas> pesquisaRoupas();
 	
 	public 	List<Roupas> pesquisaRoupasDofabricante() throws FabricanteInexistenteException;
 	
