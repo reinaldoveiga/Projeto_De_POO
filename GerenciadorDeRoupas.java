@@ -2,7 +2,7 @@ import java.util.List;
 
 public interface GerenciadorDeRoupas {
 
-	public void cadastraRoupas(Roupas r) throws RoupaInexistenteException;
+	public void cadastraRoupas(Roupas r);
 	
 	public 	List<Roupas> pesquisaRoupas();
 	
