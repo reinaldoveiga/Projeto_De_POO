@@ -3,7 +3,7 @@ import java.util.List;
 
 public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	
-		private List<Roupas> roupas;
+	private List<Roupas> roupas;
 		
 	public GerenciadorDeRoupasParaLojas(){
 		this.roupas = new ArrayList<Roupas>();
