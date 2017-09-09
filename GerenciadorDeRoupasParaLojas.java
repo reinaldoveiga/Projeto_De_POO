@@ -12,50 +12,72 @@ public class GerenciadorDeRoupasParaLojas implements GerencidorDeRoupas {
 
 	@Override
 	public void cadastraRoupas(Roupas r) {
-		// TODO Auto-generated method stub
+		this.roupas.add(r);
 		
 	}
 
 	@Override
 	public List<Roupas> pesquisaRoupas() throws RoupaInexistenteException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.roupas;
 	}
 
 	@Override
 	public List<Roupas> pesquisaRoupasDofabricante() throws FabricanteInexistenteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Roupas> r = new ArrayList<Roupas>();
+		for(Roupas ro : this.roupas){
+			if(ro.getFabricante().equals(fabricante)){
+				r.add(ro);
+			}
+		}
+		return r;
 	}
 
 	@Override
 	public List<Roupas> pesquisaRoupasPorTamanho() throws TamanhoInexistenteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Roupas> r = new ArrayList<Roupas>();
+		for(Roupas ro : this.roupas){
+			if(ro.getTamanho().equals(tamanho)){
+				r.add(ro);
+			}
+		}
+		return r;
 	}
 
 	@Override
 	public List<Roupas> pesquisaRoupasPorSexo() throws SexoInexistenteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+List<Roupas> r = new ArrayList<Roupas>();
+		for(Roupas ro : this.roupas){
+			if(ro.getSexo().equals(sexo)){
+				r.add(ro);
+			}
+		}
+		return r;	}
 
 	@Override
 	public List<Roupas> pesquisaRoupasPorTipo() throws TipoInexistenteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Roupas> r = new ArrayList<Roupas>();
+		for(Roupas ro : this.roupas){
+			if(ro.getTipo().equals(tipo)){
+				r.add(ro);
+			}
+		}
+		return r;
 	}
 
 	@Override
 	public int informaQuantidadeDeRoupasCadastradas() {
-		// TODO Auto-generated method stub
-		return 0;
+		int quantidade = this.roupas.size();
+		return quantidade;
 	}
 
 	@Override
 	public void removeRoupas(String tipo, String fabricante, String tamanho, String sexo)
 			throws RoupaInexistenteException {
-		// TODO Auto-generated method stub
+		for(Roupas r : this.roupas){
+			if(r.getFabricante().equals(fabricante) && r.getTamanho().equals(tamanho) && r.getSexo().equals(sexo) && r.getTipo().equals(tipo)){
+				this.roupas.remove(r);
+			}
+		}b
 		
 	}
 
