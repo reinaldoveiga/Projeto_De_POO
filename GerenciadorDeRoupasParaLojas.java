@@ -11,13 +11,13 @@ public class GerenciadorDeRoupasParaLojas implements GerencidorDeRoupas {
 	}
 
 	@Override
-	public void cadastraRoupas(Roupas r) {
+	public void cadastraRoupas(Roupas r) throws RoupaInexistenteException {
 		this.roupas.add(r);
 		
 	}
 
 	@Override
-	public List<Roupas> pesquisaRoupas() throws RoupaInexistenteException {
+	public List<Roupas> pesquisaRoupas() {
 		return this.roupas;
 	}
 
@@ -77,7 +77,7 @@ List<Roupas> r = new ArrayList<Roupas>();
 			if(r.getFabricante().equals(fabricante) && r.getTamanho().equals(tamanho) && r.getSexo().equals(sexo) && r.getTipo().equals(tipo)){
 				this.roupas.remove(r);
 			}
-		}b
+		}
 		
 	}
 
