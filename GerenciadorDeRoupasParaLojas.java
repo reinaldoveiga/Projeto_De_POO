@@ -94,9 +94,9 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	public void removeRoupas(String tipo, String fabricante, String tamanho, String sexo)
 			throws RoupaInexistenteException {
 		boolean achou = false;
-		for(Roupas r : this.roupas){
-			if(r.getFabricante().equals(fabricante) && r.getTamanho().equals(tamanho) && r.getSexo().equals(sexo) && r.getTipo().equals(tipo)){
-				this.roupas.remove(r);
+		for(Roupas ro : this.roupas){
+			if(ro.getTipo().equals(tipo) && ro.getFabricante().equals(fabricante) && ro.getTamanho().equals(tamanho) && ro.getSexo().equals(sexo)){
+				this.roupas.remove(ro);
 				achou = true;
 			}
 		}
