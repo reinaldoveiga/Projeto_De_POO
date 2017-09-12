@@ -6,13 +6,13 @@ public interface GerenciadorDeRoupas {
 	
 	public 	List<Roupas> pesquisaRoupas();
 	
-	public 	List<Roupas> pesquisaRoupasDofabricante() throws FabricanteInexistenteException;
+	public 	List<Roupas> pesquisaRoupasDofabricante(String fabricante) throws FabricanteInexistenteException;
 	
-	public 	List<Roupas> pesquisaRoupasPorTamanho() throws TamanhoInexistenteException;
+	public 	List<Roupas> pesquisaRoupasPorTamanho(String tamanho) throws TamanhoInexistenteException;
 	
-	public 	List<Roupas> pesquisaRoupasPorSexo() throws SexoInexistenteException;
+	public 	List<Roupas> pesquisaRoupasPorSexo(String sexo) throws SexoInexistenteException;
 	
-	public 	List<Roupas> pesquisaRoupasPorTipo() throws TipoInexistenteException;
+	public 	List<Roupas> pesquisaRoupasPorTipo(String tipo) throws TipoInexistenteException;
 	
 	public int informaQuantidadeDeRoupasCadastradas();
 	
