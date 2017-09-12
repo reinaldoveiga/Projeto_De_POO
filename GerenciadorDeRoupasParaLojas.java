@@ -21,7 +21,7 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	}
 
 	@Override
-	public List<Roupas> pesquisaRoupasDofabricante() throws FabricanteInexistenteException {
+	public List<Roupas> pesquisaRoupasDofabricante(String fabricante) throws FabricanteInexistenteException {
 		List<Roupas> r = new ArrayList<Roupas>();
 		boolean achou = false;
 		for(Roupas ro : this.roupas){
@@ -37,7 +37,7 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	}
 
 	@Override
-	public List<Roupas> pesquisaRoupasPorTamanho() throws TamanhoInexistenteException {
+	public List<Roupas> pesquisaRoupasPorTamanho(String tamanho) throws TamanhoInexistenteException {
 		List<Roupas> r = new ArrayList<Roupas>();
 		boolean achou = false;
 		for(Roupas ro : this.roupas){
@@ -53,7 +53,7 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	}
 
 	@Override
-	public List<Roupas> pesquisaRoupasPorSexo() throws SexoInexistenteException {
+	public List<Roupas> pesquisaRoupasPorSexo(String sexo) throws SexoInexistenteException {
 		List<Roupas> r = new ArrayList<Roupas>();
 		boolean achou = false;
 		for(Roupas ro : this.roupas){
@@ -69,7 +69,7 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	}
 
 	@Override
-	public List<Roupas> pesquisaRoupasPorTipo() throws TipoInexistenteException {
+	public List<Roupas> pesquisaRoupasPorTipo(String tipo) throws TipoInexistenteException {
 		List<Roupas> r = new ArrayList<Roupas>();
 		boolean achou = false;
 		for(Roupas ro : this.roupas){
