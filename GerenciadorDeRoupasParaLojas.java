@@ -1,109 +1,120 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
-	
-	private List<Roupas> roupas;
-		
-	public GerenciadorDeRoupasParaLojas(){
-		this.roupas = new ArrayList<Roupas>();
-	}
+public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas{
 
-	@Override
-	public void cadastraRoupas(Roupas r) {
-		this.roupas.add(r);
-		
-	}
+    private Map<String, Roupas> roupas;
+    
+    public GerenciadorDeRoupasParaLojas() {
+   	 this.roupas = new TreeMap<>();
+    }
+    
+    @Override
+    public void cadastraRoupas(Roupas r) throws RoupaJaExisteException {
+   	 if (roupas.containsKey(r.getCodDeBarras())) {
+   		 throw new RoupaJaExisteException("Já existe uma roupa com esse código de barras:" + r.getCodDeBarras());
+   	 }
+   		 this.roupas.put(r.getCodDeBarras(), r);
+   	 
+    }
 
-	@Override
-	public List<Roupas> pesquisaRoupas() {
-		return this.roupas;
-	}
+    @Override
+    public List<Roupas> pesquisaRoupas() {
+   	 List<Roupas> r = new ArrayList<Roupas>(this.roupas.values());
+   	 return r;
+    }
 
-	@Override
-	public List<Roupas> pesquisaRoupasDofabricante(String fabricante) throws FabricanteInexistenteException {
-		List<Roupas> r = new ArrayList<Roupas>();
-		boolean achou = false;
-		for(Roupas ro : this.roupas){
-			if(ro.getFabricante().equals(fabricante)){
-				r.add(ro);
-				achou = true;
-			}
-		}
-		if(!achou){
-			throw new FabricanteInexistenteException("Esse fabricante não existe!");
-		}
-		return r;
-	}
+    @Override
+    public List<Roupas> pesquisaRoupasDofabricante(String fabricante) throws FabricanteInexistenteException {
+   	 List<Roupas> listFabricante = new ArrayList<>();
+   	 boolean achou = false;
 
-	@Override
-	public List<Roupas> pesquisaRoupasPorTamanho(String tamanho) throws TamanhoInexistenteException {
-		List<Roupas> r = new ArrayList<Roupas>();
-		boolean achou = false;
-		for(Roupas ro : this.roupas){
-			if(ro.getTamanho().equals(tamanho)){
-				r.add(ro);
-				achou = true;
-			}
-		}
-		if(!achou){
-			throw new TamanhoInexistenteException("Esse tamanho não existe!");
-		}
-		return r;
-	}
+   	 for(Roupas f : this.roupas.values()) {
+   		 if (f.getFabricante().equals(fabricante)) {
+   			 listFabricante.add((Roupas) f);
+   			 achou = true;
+   		 }
+   	 }
+   	 if (!(achou)) {
+   		 throw new FabricanteInexistenteException("Esse fabricante não existe: "+fabricante);
+   	 }
+   	 return listFabricante;
+    }
 
-	@Override
-	public List<Roupas> pesquisaRoupasPorSexo(String sexo) throws SexoInexistenteException {
-		List<Roupas> r = new ArrayList<Roupas>();
-		boolean achou = false;
-		for(Roupas ro : this.roupas){
-			if(ro.getSexo().equals(sexo)){
-				r.add(ro);
-				achou = true;
-			}
-		}
-		if(!achou){
-			throw new SexoInexistenteException("Esse sexo não existe!");
-		}
-		return r;	
-	}
+    @Override
+    public List<Roupas> pesquisaRoupasPorTamanho(String tamanho) throws TamanhoInexistenteException {
+   	 List<Roupas> listTamanho = new ArrayList<>();
+   	 boolean achou = false;
 
-	@Override
-	public List<Roupas> pesquisaRoupasPorTipo(String tipo) throws TipoInexistenteException {
-		List<Roupas> r = new ArrayList<Roupas>();
-		boolean achou = false;
-		for(Roupas ro : this.roupas){
-			if(ro.getTipo().equals(tipo)){
-				r.add(ro);
-				achou = true;
-			}
-		}
-		if(!achou){
-			throw new TipoInexistenteException("Esse tipo de roupa não existe!");
-		}
-		return r;
-	}
+   	 for(Roupas t : this.roupas.values()) {
+   		 if (t.getTamanho().equals(tamanho)) {
+   			 listTamanho.add((Roupas) t);
+   			 achou = true;
+   		 }
+   	 }
+   	 if (!(achou)) {
+   		 throw new TamanhoInexistenteException("Esse tamanho não existe: "+tamanho);
+   	 }
+   	 return listTamanho;
+   	 
+    }
 
-	@Override
-	public int informaQuantidadeDeRoupasCadastradas() {
-		int quantidade = this.roupas.size();
-		return quantidade;
-	}
+    @Override
+    public List<Roupas> pesquisaRoupasPorSexo(Sexo sexo) throws SexoInexistenteException {
+   	 List<Roupas> listSexo = new ArrayList<>();
+   	 boolean achou = false;
 
-	@Override
-	public void removeRoupas(String tipo, String fabricante, String tamanho, String sexo)
-			throws RoupaInexistenteException {
-		boolean achou = false;
-		for(Roupas ro : this.roupas){
-			if(ro.getTipo().equals(tipo) && ro.getFabricante().equals(fabricante) && ro.getTamanho().equals(tamanho) && ro.getSexo().equals(sexo)){
-				this.roupas.remove(ro);
-				achou = true;
-			}
-		}
-		if(!achou){
-			throw new RoupaInexistenteException("Essa roupa não existe!");
-		}
-		
-	}
+   	 for(Roupas s : this.roupas.values()) {
+   		 if (s.getSexo().equals(sexo)) {
+   			 listSexo.add((Roupas) s);
+   			 achou = true;
+   		 }
+   	 }
+   	 if (!(achou)) {
+   		 throw new SexoInexistenteException("Esse sexo não existe: "+sexo);
+   	 }
+   	 return listSexo;
+    }
+
+    @Override
+    public List<Roupas> pesquisaRoupasPorTipo(String tipo) throws TipoInexistenteException {
+   	 List<Roupas> listTipo = new ArrayList<>();
+   	 boolean achou = false;
+
+   	 for(Roupas t : this.roupas.values()) {
+   		 if (t.getTipo().equals(tipo)) {
+   			 listTipo.add((Roupas) t);
+   			 achou = true;
+   		 }
+   	 }
+   	 if (!(achou)) {
+   		 throw new TipoInexistenteException("Esse tipo de roupa não existe: "+tipo);
+   	 }
+   	 return listTipo;
+    }
+    
+    @Override
+    public Roupas pesquisaRoupasPorCodigo(String codigo) throws CodigoDeBarrasInexistenteException {
+   	 if (!(roupas.containsKey(codigo))) {
+   		 throw new CodigoDeBarrasInexistenteException("Não existe roupa com esse código: "+codigo);
+   	 }
+   	 return this.roupas.get(codigo);
+    }
+    
+    @Override
+    public int informaQuantidadeDeRoupasCadastradas() {
+   	 int quant = this.roupas.size();
+   	 return quant;
+    }
+
+    @Override
+    public void removeRoupas(String codigo) throws RoupaInexistenteException {
+   	 if (!(roupas.containsKey(codigo))) {
+   		 throw new RoupaInexistenteException("Não existe roupa com esse código: "+codigo);
+   	 }
+   	 this.roupas.remove(codigo);
+    }
 
 }
