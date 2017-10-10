@@ -3,6 +3,13 @@ public class Roupas {
     private String tipo, fabricante, tamanho ,codDeBarras;
     private Sexo sexo;
     
+    public Roupas(){
+    	this.tipo = "";
+      	this.fabricante = "";
+      	this.sexo = null;
+      	this.tamanho = "";
+      	this.codDeBarras = "";
+    }
     public Roupas(String tipo, String fabricante, Sexo sexo, String tamanho, String codigo){
    	 this.tipo = tipo;
    	 this.fabricante = fabricante;
