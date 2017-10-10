@@ -12,12 +12,15 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas{
     }
     
     @Override
-    public void cadastraRoupas(Roupas r) throws RoupaJaExisteException {
-   	 if (roupas.containsKey(r.getCodDeBarras())) {
+    public void cadastraRoupas(Roupas r) throws RoupaJaExisteException, RoupaInvalidaException{
+    if(r.getCodDeBarras().equals("")||r.getTamanho().equals("") ||r.getTipo().equals("")||r.getFabricante().equals("")||r.getSexo().equals(null)){
+    	throw new RoupaInvalidaException("Roupa inválida! Preencha todos!");
+       		
+    }else if (roupas.containsKey(r.getCodDeBarras())) {
    		 throw new RoupaJaExisteException("Já existe uma roupa com esse código de barras:" + r.getCodDeBarras());
-   	 }
+   	 }else{
    		 this.roupas.put(r.getCodDeBarras(), r);
-   	 
+   	 }
     }
 
     @Override
@@ -116,5 +119,5 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas{
    	 }
    	 this.roupas.remove(codigo);
     }
-
+    
 }
