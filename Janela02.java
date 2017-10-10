@@ -14,32 +14,14 @@ import java.awt.Font;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 
-public class janela02 extends JFrame {
+public class Janela02 extends JFrame {
 	private JTextField textTipo;
 	private JTextField textFabricante;
 	private JTextField textTamanho;
 	private JTextField textCodigoDeBarras;
 	GerenciadorDeRoupasParaLojas gerenciador;
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					janela02 frame = new janela02();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the frame.
-	 */
-	public janela02(GerenciadorDeRoupasParaLojas gerenciador) {
+	
+	public Janela02(GerenciadorDeRoupasParaLojas gerenciador) {
 		
 		this.gerenciador = gerenciador;
 
@@ -174,14 +156,8 @@ public class janela02 extends JFrame {
 			 }
 	}
 	private void voltar(){
-		//System.exit(0);
-		//janela01 janela1 = new janela01();
-			
-		//janela1.setVisible(true);
-		//new janela01();
-		//janela01.setVisible(true);
 		dispose();
-		//janela.setVisible(true);	
+			
 
 	}
 }
