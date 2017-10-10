@@ -16,11 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 
-//import GerenciadorFrame.EntrarAction;
-
-public class janela01 extends JFrame{//JInternalFrame {
+public class Janela01 extends JFrame{
     private GerenciadorDeRoupasParaLojas gerenciador;
-    //janela01 frame = new janela01();
 
     /**
      * Launch the application.
@@ -29,12 +26,9 @@ public class janela01 extends JFrame{//JInternalFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    janela01 frame = new janela01();
+                    Janela01 frame = new Janela01();
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setSize(630, 460);
-                   // frame.setVisible(true);
-                    //frame.setState(JFrame.NORMAL);
-                    //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                     frame.setResizable(false);
@@ -49,14 +43,13 @@ public class janela01 extends JFrame{//JInternalFrame {
     /**
      * Create the frame.
      */
-    public janela01() {
+    public Janela01() {
         
         this.gerenciador = new GerenciadorDeRoupasParaLojas();
        
         
         
         setBounds(100, 100, 450, 300);
-        //setBounds(1000, 200, 450, 300);
         getContentPane().setLayout(null);
         
         JLabel opcao = new JLabel("Gerenciador de Roupas");
@@ -284,7 +277,7 @@ public class janela01 extends JFrame{//JInternalFrame {
 
     }
     private void cadastrarRoupa() {
-    	janela02 janela2 = new janela02(gerenciador);
+    	Janela02 janela2 = new Janela02(gerenciador);
         janela2.setSize(630, 460);
         janela2.setResizable(false);
     	janela2.setVisible(true);
