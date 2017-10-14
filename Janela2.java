@@ -303,11 +303,11 @@ public class Janela2 extends JFrame {
 		
 		JanelaPrincipal janela1 = new JanelaPrincipal(this.gerenciador);
 		janela1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela1.setSize(630, 460);
+        	janela1.setSize(630, 460);
       
-        janela1.setLocationRelativeTo(null);
-        janela1.setVisible(true);
-        janela1.setResizable(false);
+        	janela1.setLocationRelativeTo(null);
+        	janela1.setVisible(true);
+        	janela1.setResizable(false);
       
 		dispose();
 		}
