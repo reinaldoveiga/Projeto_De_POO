@@ -1,3 +1,5 @@
+package projeto.ufpb.poo;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -31,13 +33,13 @@ import javax.swing.JOptionPane;
    	 }
 
    	
-  public void gravaTextoEmArquivo(List<Roupas> texto, String nomeArquivo)
+  public void gravaTextoEmArquivo(List<String> texto, String nomeArquivo)
    			 throws IOException {
    		 BufferedWriter gravador = null;
    		 try {
    			 gravador = new BufferedWriter(new FileWriter(nomeArquivo));
-             for (Roupas s: texto){
-            	 gravador.write(s.toString()+"\n");
+             for (String s: texto){
+            	 gravador.write(s+"\n");
                         	}
    		 } finally {
    			 if (gravador!=null){
@@ -45,14 +47,22 @@ import javax.swing.JOptionPane;
    			 }
    		 }
    	 }
+  
   	
   public void gravaRoupas(List<Roupas> roup){
-  		 
+  		 List<String> lista = new ArrayList<String>();
+  		for(Roupas p : roup){
+  			lista.add(p.getTipo());
+  			lista.add(p.getFabricante());
+  			lista.add(p.getSexo().toString());
+  			lista.add(p.getTamanho());
+  			lista.add(p.getCodDeBarras());
+  			}
 
   		 try {
   			 
-  			 gravaTextoEmArquivo(roup,"Roupas.txt");
-  			 JOptionPane.showMessageDialog(null, "Arquivo gravado com sucesso!");
+  			 gravaTextoEmArquivo(lista,"Roupas.txt");
+  			// JOptionPane.showMessageDialog(null, "Arquivo gravado com sucesso!");
   		 } catch (IOException e) {
   	 
   			 JOptionPane.showMessageDialog(null, "erro ao gravar");
@@ -61,7 +71,7 @@ import javax.swing.JOptionPane;
   	 }
   	 public List<Roupas> recuperarRoupas(){
   		 
-  		 List<Roupas> lista=new ArrayList<Roupas>();
+  		 List<Roupas> lista = new ArrayList<Roupas>();
   		 
   		 try {
   			 
@@ -70,18 +80,21 @@ import javax.swing.JOptionPane;
   			 Sexo sexo = Sexo.MASCULINO;
   			 for(int k=0;k<roups.size();k++){
   				 String tipo=roups.get(k);
+  				 k++;
   				 String fabricante=roups.get(k);
+  				 k++;
   				 if(roups.get(k).equals("MASCULINO")){
   					 sexo = Sexo.MASCULINO;
-  					
+  					 k++;
   				 }else if(roups.get(k).equals("FEMININO")){
   					 sexo = Sexo.FEMININO;
-  					 
+  					 k++;
   				 }else{
   					 sexo = Sexo.UNISEX;
-  					 
+  					 k++;
   				 }
   				 String tamanho=roups.get(k);
+  				 k++;
   				 String codDeBarras=roups.get(k);
   				
   				 Roupas end= new Roupas(tipo, fabricante, sexo, tamanho, codDeBarras);
@@ -98,5 +111,5 @@ import javax.swing.JOptionPane;
   		 return lista;
   		 
   	 }
-  	
+  	   	
     }
