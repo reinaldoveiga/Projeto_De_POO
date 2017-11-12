@@ -1,4 +1,5 @@
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,23 +14,25 @@ import java.awt.Font;
 import java.io.File;
 import javax.swing.JComboBox;
 
-public class Janela2 extends JFrame {
+public class JanelaCadastraRoupas extends JFrame {
 	private JTextField textCodigoDeBarras;
-	GerenciadorDeRoupasParaLojas gerenciador;
-	Gravador gravador = new Gravador();	
+	private GerenciadorDeRoupasParaLojas gerenciador;
+	private Gravador gravador = new Gravador();	
 	
-	Sexo sexo = null;
-	Roupas roupa = new Roupas();
-	String tipo = "";
-	String tamanho = "";
-	String fabricante = "";
+	private Sexo sexo = null;
+	private Roupas roupa = new Roupas();
+	private String tipo = "";
+	private String tamanho = "";
+	private String fabricante = "";
+	private double preco = 0.00;
 	
-	JComboBox comboBoxTipo;
-	JComboBox comboBoxFabricante;
-	JComboBox comboBoxTamanho;
-	JComboBox comboBoxSexo;
-	
-	public Janela2(GerenciadorDeRoupasParaLojas gerenciador) {
+	private JComboBox comboBoxTipo;
+	private JComboBox comboBoxFabricante;
+	private JComboBox comboBoxTamanho;
+	private JComboBox comboBoxSexo;
+	private JComboBox comboBoxPreco;
+
+	public JanelaCadastraRoupas(GerenciadorDeRoupasParaLojas gerenciador) {
 		
 		this.gerenciador = gerenciador;
 		
@@ -37,8 +40,9 @@ public class Janela2 extends JFrame {
 		this.comboBoxTipo = new JComboBox();
 		this.comboBoxTamanho = new JComboBox();
 		this.comboBoxFabricante = new JComboBox();
+		this.comboBoxPreco = new JComboBox();
 
-		setBounds(100, 100, 450, 450);
+		setBounds(100, 100, 572, 462);
 		getContentPane().setLayout(null);
 		
 		JLabel lblTipo = new JLabel("Tipo");
@@ -56,24 +60,25 @@ public class Janela2 extends JFrame {
 		JLabel lblTamanho = new JLabel("Tamanho");
 		lblTamanho.setFont(new Font("Arial", Font.BOLD, 13));
 		lblTamanho.setForeground(Color.WHITE);
-		lblTamanho.setBounds(396, 86, 70, 15);
+		lblTamanho.setBounds(396, 71, 70, 15);
 		getContentPane().add(lblTamanho);
 		
 		JLabel lblCdigoDeBarras = new JLabel("Código de Barras");
 		lblCdigoDeBarras.setFont(new Font("Arial", Font.BOLD, 13));
 		lblCdigoDeBarras.setBackground(Color.WHITE);
 		lblCdigoDeBarras.setForeground(Color.WHITE);
-		lblCdigoDeBarras.setBounds(126, 86, 152, 15);
+		lblCdigoDeBarras.setBounds(114, 126, 152, 15);
 		getContentPane().add(lblCdigoDeBarras);
 		
 		textCodigoDeBarras = new JTextField();
 		textCodigoDeBarras.setBackground(Color.WHITE);
-		textCodigoDeBarras.setBounds(126, 112, 113, 19);
+		textCodigoDeBarras.setBounds(124, 153, 113, 19);
 		getContentPane().add(textCodigoDeBarras);
 		textCodigoDeBarras.setColumns(10);
 		
+		//Botões
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setIcon(new ImageIcon(janela02.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
+		btnCadastrar.setIcon(new ImageIcon(JanelaCadastraRoupas.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			cadastraRoupas();
@@ -84,7 +89,7 @@ public class Janela2 extends JFrame {
 		getContentPane().add(btnCadastrar);
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setIcon(new ImageIcon(janela02.class.getResource("/imagensProjeto/back-arrow (1).png")));
+		btnVoltar.setIcon(new ImageIcon(JanelaCadastraRoupas.class.getResource("/imagensProjeto/back-arrow (1).png")));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			voltar();
@@ -93,13 +98,14 @@ public class Janela2 extends JFrame {
 		btnVoltar.setBounds(349, 295, 117, 25);
 		getContentPane().add(btnVoltar);
 		
+		//ComboBox de opções
 		//Sexo
 		comboBoxSexo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selecionaSexo();
 			}
 		});
-		comboBoxSexo.setBounds(257, 165, 113, 20);
+		comboBoxSexo.setBounds(126, 97, 113, 20);
 		comboBoxSexo.addItem("");
 		comboBoxSexo.addItem("Masculino");
 		comboBoxSexo.addItem("Feminino");
@@ -109,7 +115,7 @@ public class Janela2 extends JFrame {
 		JLabel lblSexo = new JLabel("Sexo");
 		lblSexo.setForeground(Color.WHITE);
 		lblSexo.setFont(new Font("Arial", Font.BOLD, 13));
-		lblSexo.setBounds(295, 140, 46, 14);
+		lblSexo.setBounds(158, 71, 46, 14);
 		getContentPane().add(lblSexo);
 		
 		//Tipo
@@ -135,7 +141,7 @@ public class Janela2 extends JFrame {
 				selecionaTamanho();
 			}
 		});
-		comboBoxTamanho.setBounds(375, 112, 113, 20);
+		comboBoxTamanho.setBounds(375, 97, 113, 20);
 		comboBoxTamanho.addItem("");
 		comboBoxTamanho.addItem("Selecionar outro");
 		comboBoxTamanho.addItem("PP");
@@ -166,14 +172,57 @@ public class Janela2 extends JFrame {
 		
 		getContentPane().add(comboBoxFabricante);
 		
+		//preço
+		comboBoxPreco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				selecionaPreco();
+			}
+		});
+		
+		comboBoxPreco.setBounds(375, 150, 113, 20);
+		comboBoxPreco.addItem("R$ 5.00");
+		comboBoxPreco.addItem("R$ 8.00");
+		comboBoxPreco.addItem("R$ 10.00");
+		comboBoxPreco.addItem("R$ 15.00");
+		comboBoxPreco.addItem("R$ 20.00");
+		comboBoxPreco.addItem("R$ 25.00");
+		comboBoxPreco.addItem("R$ 30.00");
+		comboBoxPreco.addItem("R$ 35.00");
+		comboBoxPreco.addItem("R$ 40.00");
+		comboBoxPreco.addItem("R$ 45.00");
+		comboBoxPreco.addItem("R$ 50.00");
+		comboBoxPreco.addItem("R$ 55.00");
+		comboBoxPreco.addItem("R$ 60.00");
+		comboBoxPreco.addItem("R$ 65.00");
+		comboBoxPreco.addItem("R$ 70.00");
+		comboBoxPreco.addItem("R$ 75.00");
+		comboBoxPreco.addItem("R$ 80.00");
+		comboBoxPreco.addItem("R$ 85.00");
+		comboBoxPreco.addItem("R$ 90.00");
+		comboBoxPreco.addItem("R$ 95.00");
+		comboBoxPreco.addItem("R$ 100.00");
+		comboBoxPreco.addItem("R$ 120.00");
+		comboBoxPreco.addItem("R$ 125.00");
+		comboBoxPreco.addItem("R$ 130.00");
+		comboBoxPreco.addItem("R$ 150.00");
+		comboBoxPreco.addItem("R$ 200.00");
+
+		getContentPane().add(comboBoxPreco);
+		
+		JLabel lblPreo = new JLabel("Preço");
+		lblPreo.setFont(new Font("Dialog", Font.BOLD, 13));
+		lblPreo.setForeground(Color.WHITE);
+		lblPreo.setBounds(410, 126, 122, 10);
+		getContentPane().add(lblPreo);
+		
 		JLabel lblFundodestaque = new JLabel("fundoDestaque");
-		lblFundodestaque.setIcon(new ImageIcon(janela02.class.getResource("/imagensProjeto/fundoParaJanela2.jpg")));
-		lblFundodestaque.setBounds(105, -3, 402, 195);
+		lblFundodestaque.setIcon(new ImageIcon(JanelaCadastraRoupas.class.getResource("/imagensProjeto/fundoParaJanela2.jpg")));
+		lblFundodestaque.setBounds(88, -48, 438, 249);
 		getContentPane().add(lblFundodestaque);
 		
 		JLabel lblJanela = new JLabel("janela2");
-		lblJanela.setIcon(new ImageIcon(janela02.class.getResource("/imagensProjeto/Janela2.jpeg")));
-		lblJanela.setBounds(-11, -3, 719, 442);
+		lblJanela.setIcon(new ImageIcon(JanelaCadastraRoupas.class.getResource("/imagensProjeto/Janela2.jpeg")));
+		lblJanela.setBounds(-11, -3, 733, 473);
 		getContentPane().add(lblJanela);
 	    			
 	
@@ -181,15 +230,15 @@ public class Janela2 extends JFrame {
 	
 	private void selecionarTipo(){
 		if(comboBoxTipo.getSelectedItem().toString().equals("camisa")){
-			tipo = "CAMISA";
+			this.tipo = "CAMISA";
 		}else if(comboBoxTipo.getSelectedItem().toString().equals("calça")){
-			tipo = "CALÇA";
+			this.tipo = "CALÇA";
 		}else if(comboBoxTipo.getSelectedItem().toString().equals("gravata")){
-			tipo = "GRAVATA";
+			this.tipo = "GRAVATA";
 		}else if(comboBoxTipo.getSelectedItem().toString().equals("short")){
-			tipo = "SHORT";
+			this.tipo = "SHORT";
 		}else if(comboBoxTipo.getSelectedItem().toString().equals("vestido")){
-			tipo = "VESTIDO";	
+			this.tipo = "VESTIDO";	
 		}else if(comboBoxTipo.getSelectedItem().toString().equals("Selecionar outro")){
 			String outroTipo = JOptionPane.showInputDialog("Digite aqui o tipo da roupa:");
 			if(outroTipo == null){
@@ -197,26 +246,26 @@ public class Janela2 extends JFrame {
 			}else if(outroTipo.equals("")){
 				JOptionPane.showMessageDialog(null,"Digite Novamente!");	
 			}else{
-				tipo = outroTipo.toUpperCase();
+				this.tipo = outroTipo.toUpperCase();
 			}
 		}else{
-			tipo = "";
+			this.tipo = "";
 		}
 	}
 	private void selecionarFabricante(){
 		if(comboBoxFabricante.getSelectedItem().toString().equals("adidas")){
-			fabricante = "ADIDAS";
+			this.fabricante = "ADIDAS";
 		}else if(comboBoxFabricante.getSelectedItem().toString().equals("nike")){
-			fabricante = "NIKE";
+			this.fabricante = "NIKE";
 
 		}else if(comboBoxFabricante.getSelectedItem().toString().equals("calvin_klein")){
-			fabricante = "CALVIN_KLINE";
+			this.fabricante = "CALVIN_KLINE";
 
 		}else if(comboBoxFabricante.getSelectedItem().toString().equals("polo")){
-			fabricante = "POLO";
+			this.fabricante = "POLO";
 		
 		}else if(comboBoxFabricante.getSelectedItem().toString().equals("lacoste")){
-			fabricante = "LACOSTE";
+			this.fabricante = "LACOSTE";
 
 		}else if(comboBoxFabricante.getSelectedItem().toString().equals("Selecionar outro")){
 			String outroFabricante = JOptionPane.showInputDialog("Digite aqui o fabricante da roupa:");
@@ -225,64 +274,119 @@ public class Janela2 extends JFrame {
 			}else if(outroFabricante.equals("")){
 				JOptionPane.showMessageDialog(null,"Digite Novamente!");	
 			}else{
-				fabricante = outroFabricante.toUpperCase();
+				this.fabricante = outroFabricante.toUpperCase();
 			}
 
 		}else{
-			fabricante = "";
+			this.fabricante = "";
 		}
 	}
 	private void selecionaTamanho(){
 		if(comboBoxTamanho.getSelectedItem().toString().equals("PP")){
-			tamanho = "PP";
+			this.tamanho = "PP";
 			
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("P")){
-			tamanho = "P";
+			this.tamanho = "P";
 			
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("M")){
-			tamanho = "M";
+			this.tamanho = "M";
 			
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("G")){
-			tamanho = "G";
+			this.tamanho = "G";
 			
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("GG")){
-			tamanho = "GG";
+			this.tamanho = "GG";
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("36")){
-			tamanho = "36";
+			this.tamanho = "36";
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("38")){
-			tamanho = "38";
+			this.tamanho = "38";
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("40")){
-			tamanho = "40";
+			this.tamanho = "40";
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("42")){
-			tamanho = "42";
+			this.tamanho = "42";
 		}else if(comboBoxTamanho.getSelectedItem().toString().equals("Selecionar outro")){
 			String outroTamanho = JOptionPane.showInputDialog("Digite aqui o tamanho da roupa:");
 			if(outroTamanho == null){
 			
 			}else if(outroTamanho.equals("")){
 				JOptionPane.showMessageDialog(null,"Digite Novamente!");	
-			}else{
-				tamanho = outroTamanho.toUpperCase();
+			}else{ 
+				this.tamanho = outroTamanho.toUpperCase();
 			}
 		}else{
-			tamanho = "";
+			this.tamanho = "";
 		}
 	}
 	private void selecionaSexo(){
 		if(comboBoxSexo.getSelectedItem().toString().equals("Masculino")){
-			sexo = sexo.MASCULINO;
+			this.sexo = sexo.MASCULINO;
 		}else if(comboBoxSexo.getSelectedItem().toString().equals("Feminino")){
-			sexo = sexo.FEMININO;
+			this.sexo = sexo.FEMININO;
 		}else if(comboBoxSexo.getSelectedItem().toString().equals("Unisex")){
-			sexo = sexo.UNISEX;
+			this.sexo = sexo.UNISEX;
 		}else{
-			sexo = null;
+			this.sexo = null;
 		}
 
 	}
+	private void selecionaPreco(){
+		if(comboBoxPreco.getSelectedItem().toString().equals("R$ 5.00")){
+			this.preco = 5.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 8.00")){
+			this.preco = 8.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 10.00")){
+			this.preco = 10.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 15.00")){
+			this.preco = 15.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 20.00")){
+			this.preco = 20.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 25.00")){
+			this.preco = 25.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 30.00")){
+			this.preco = 30.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 35.00")){
+			this.preco = 35.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 40.00")){
+			this.preco = 40.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 45.00")){
+			this.preco = 45.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 50.00")){
+			this.preco = 50.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 55.00")){
+			this.preco = 55.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 60.00")){
+			this.preco = 60.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 65.00")){
+			this.preco = 65.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 70.00")){
+			this.preco = 70.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 75.00")){
+			this.preco = 75.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 80.00")){
+			this.preco = 80.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 85.00")){
+			this.preco = 85.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 90.00")){
+			this.preco = 90.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 95.00")){
+			this.preco = 95.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 100.00")){
+			this.preco = 100.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 120.00")){
+			this.preco = 120.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 125.00")){
+			this.preco = 125.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 130.00")){
+			this.preco = 130.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 150.00")){
+			this.preco = 150.00;
+		}else if(comboBoxPreco.getSelectedItem().toString().equals("R$ 200.00")){
+			this.preco = 200.00;
+		}
+	}
 	
 	private void cadastraRoupas(){
-			roupa = new Roupas(tipo, fabricante, sexo, tamanho, textCodigoDeBarras.getText().toString());
+			roupa = new Roupas(tipo, fabricante, sexo, tamanho, textCodigoDeBarras.getText().toString(), preco);
 			
 			try{
 				
@@ -290,7 +394,7 @@ public class Janela2 extends JFrame {
 				 
 		        JOptionPane.showMessageDialog(null, "1 roupa cadastrada com sucesso\n"+roupa.toString());
 		        File r = new File("Roupas.txt");
-		 	gravador.gravaRoupas(gerenciador.pesquisaRoupas());
+		        gravador.gravaRoupas(gerenciador.pesquisaRoupas());
 		 		
 			}catch(RoupaInvalidaException e){
 				JOptionPane.showMessageDialog(null,e.getMessage());
@@ -303,11 +407,10 @@ public class Janela2 extends JFrame {
 		
 		JanelaPrincipal janela1 = new JanelaPrincipal(this.gerenciador);
 		janela1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        	janela1.setSize(630, 460);
-      
-        	janela1.setLocationRelativeTo(null);
-        	janela1.setVisible(true);
-        	janela1.setResizable(false);
+        janela1.setSize(630, 460);
+        janela1.setLocationRelativeTo(null);
+        janela1.setVisible(true);
+        janela1.setResizable(false);
       
 		dispose();
 		}
