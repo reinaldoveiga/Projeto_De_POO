@@ -1,3 +1,4 @@
+
 import java.util.List;
 
 public interface GerenciadorDeRoupas {
@@ -19,5 +20,19 @@ public interface GerenciadorDeRoupas {
     public int informaQuantidadeDeRoupasCadastradas();
     
     public void removeRoupas(String codigo) throws RoupaInexistenteException;
+    
+    public void comprasPorCodigoDeBarrasParaCarrinho(String codigo) throws CodigoDeBarrasInexistenteException;
+	
+    public void compraCarrinhoEPreparaRelatorio();
+    
+    public void valorTotalComprasEPreparaRelatorio(String codigo)throws CodigoDeBarrasInexistenteException;
+    
+    public double comprasComPromocao(double promocao, double valorTotal) throws NumeroNegativoException;
+
+	public double rendaDiaria(int dia);
+	
+	public double rendaMensal(int mes);
+	
+	public double rendaAnual(int ano);
     
 }
