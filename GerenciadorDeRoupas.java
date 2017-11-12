@@ -29,10 +29,10 @@ public interface GerenciadorDeRoupas {
     
     public double comprasComPromocao(double promocao, double valorTotal) throws NumeroNegativoException;
 
-	public double rendaDiaria(int dia);
+    public double rendaDiaria(int dia);
 	
-	public double rendaMensal(int mes);
+    public double rendaMensal(int mes);
 	
-	public double rendaAnual(int ano);
+    public double rendaAnual(int ano);
     
 }
