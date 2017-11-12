@@ -7,10 +7,12 @@ public class GerenciadorDeRoupasParaLojasTest {
 	@Test
 	public void test() {
 		GerenciadorDeRoupasParaLojas g = new GerenciadorDeRoupasParaLojas();
-		Roupas r = new Roupas("calça", "Adidas", Sexo.MASCULINO, "32", "123454");
+		Roupas r = new Roupas("calça", "Adidas", Sexo.MASCULINO, "32", "123454", 10.00);
 		 try{
 	   		 g.cadastraRoupas(r);
-	   	 }catch(RoupaJaExisteException e){
+		 }catch(RoupaInvalidaException e){
+			 fail("Roupa Inválida!");
+		 }catch(RoupaJaExisteException e){
 	   		 fail("Essa roupa já está cadastrada!");
 	   	 }
 		assertTrue(g.informaQuantidadeDeRoupasCadastradas()==1);
