@@ -1,4 +1,3 @@
-package projeto.ufpb.poo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -47,7 +46,21 @@ import javax.swing.JOptionPane;
    			 }
    		 }
    	 }
-  
+  public void gravaRelatorio(List<Relatorio> relato){
+	  List<String> lista = new ArrayList<String>();
+	  for(Relatorio r : relato){
+			lista.add(""+r.getDia());
+			lista.add(""+r.getMes());
+			lista.add(""+r.getAno());
+			lista.add(""+r.getRenda());
+			
+		}
+	  try{
+		  gravaTextoEmArquivo(lista, "Relatorio.txt");
+	  }catch(IOException e){
+		  JOptionPane.showMessageDialog(null, "erro ao gravar");
+	  }
+  }
   	
   public void gravaRoupas(List<Roupas> roup){
   		 List<String> lista = new ArrayList<String>();
@@ -57,7 +70,8 @@ import javax.swing.JOptionPane;
   			lista.add(p.getSexo().toString());
   			lista.add(p.getTamanho());
   			lista.add(p.getCodDeBarras());
-  			}
+  			lista.add(""+p.getPreco());
+  		}
 
   		 try {
   			 
@@ -69,7 +83,34 @@ import javax.swing.JOptionPane;
   		 }
   		 
   	 }
-  	 public List<Roupas> recuperarRoupas(){
+  	
+  public List<Relatorio> recuperarRelatorio(){
+  		List<Relatorio> lista = new ArrayList<Relatorio>();
+  		try{
+  			List<String> relato;
+  			relato = recuperaTextoDeArquivo("Relatorio.txt");
+  			for(int k=0; k < relato.size(); k++){
+  				
+  				int dia = Integer.parseInt(relato.get(k));
+  				k++;
+  				int mes = Integer.parseInt(relato.get(k));
+  				k++;
+  				int ano = Integer.parseInt(relato.get(k));
+  				k++;
+  				double renda = Double.parseDouble(relato.get(k));
+  				
+  				Relatorio r = new Relatorio(dia, mes, ano, renda);
+  				lista.add(r);
+  			}
+  			
+  		}catch (IOException e) {
+ 			 JOptionPane.showMessageDialog(null, "erro ao ler arquivo");
+  		}
+  		
+  		return lista;
+  	}
+  	
+  	public List<Roupas> recuperarRoupas(){
   		 
   		 List<Roupas> lista = new ArrayList<Roupas>();
   		 
@@ -96,8 +137,10 @@ import javax.swing.JOptionPane;
   				 String tamanho=roups.get(k);
   				 k++;
   				 String codDeBarras=roups.get(k);
-  				
-  				 Roupas end= new Roupas(tipo, fabricante, sexo, tamanho, codDeBarras);
+  				 k++;
+  				 double preco = Double.parseDouble(roups.get(k));
+  				 
+  				 Roupas end= new Roupas(tipo, fabricante, sexo, tamanho, codDeBarras, preco);
   				 lista.add(end);
   				 
   			 }
