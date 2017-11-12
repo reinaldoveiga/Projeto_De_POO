@@ -1,3 +1,7 @@
+
+
+
+//import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+
 import java.awt.Color;
 
 
@@ -59,30 +64,30 @@ public class JanelaPrincipal extends JFrame{
       
     }
       public void menu(){
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 612, 459);
         getContentPane().setLayout(null);
         
         
-        JLabel opcao = new JLabel("Gerenciador de Roupas");
+        JLabel opcao = new JLabel("Gerenciador de Loja de Roupas");
         opcao.setBackground(Color.WHITE);
         opcao.setForeground(Color.BLACK);
         opcao.setFont(new Font("Arial", Font.BOLD, 30));
-        opcao.setBounds(140, 157, 373, 40);
+		
+        opcao.setBounds(78, 170, 497, 67);
         getContentPane().add(opcao);
         
         JMenuBar menuBar = new JMenuBar();
-        menuBar.setBounds(270, 0, 92, 21);
+        menuBar.setBounds(370, 0, 92, 21);
         getContentPane().add(menuBar);
         
-
+        //JMenu
         JMenu mnPesquisar = new JMenu("Pesquisar");
-        mnPesquisar.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/search.png")));
+        mnPesquisar.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
         menuBar.add(mnPesquisar);
         
                 
                 JMenuItem mnTodasAsRoupas = new JMenuItem("Todas as Roupas");
-                mnTodasAsRoupas.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
-                
+                mnTodasAsRoupas.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
                 mnTodasAsRoupas.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent arg0) {
                         pesquisarTodasAsRoupas();
@@ -91,8 +96,7 @@ public class JanelaPrincipal extends JFrame{
                 mnPesquisar.add(mnTodasAsRoupas);
                 
                 JMenuItem mntmPorTipo = new JMenuItem("Por Tipo");
-                mntmPorTipo.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
-                
+                mntmPorTipo.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
                 mntmPorTipo.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent arg0) {
                         pesquisaRoupasPorTipo();
@@ -101,7 +105,7 @@ public class JanelaPrincipal extends JFrame{
                 mnPesquisar.add(mntmPorTipo);
                 
                 JMenuItem mntmPorFabricante = new JMenuItem("Por Fabricante");
-                mntmPorFabricante.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
+                mntmPorFabricante.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
                 mntmPorFabricante.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         pesquisaRoupasPorFabricante();
@@ -110,35 +114,35 @@ public class JanelaPrincipal extends JFrame{
                 mnPesquisar.add(mntmPorFabricante);
                 
                 JMenu mnNewMenu = new JMenu("Por Sexo");
-                mnNewMenu.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
+                mnNewMenu.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
                 mnPesquisar.add(mnNewMenu);
                 
-                JMenuItem mntmMasculino = new JMenuItem("Masculino");
-                mntmMasculino.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        pesquisarRoupaPeloSexoMasculino();
-                    }
-                });
-                mnNewMenu.add(mntmMasculino);
-                
-                JMenuItem mntmFeminino = new JMenuItem("Feminino");
-                mntmFeminino.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        pesquisarRoupaPeloSexoFeminino();
-                    }
-                });
-                mnNewMenu.add(mntmFeminino);
-                
-                JMenuItem mntmUnisex = new JMenuItem("Unisex");
-                mntmUnisex.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        pesquisarRoupaPeloSexoUnisex();
-                    }
-                });
-                mnNewMenu.add(mntmUnisex);
+	                JMenuItem mntmMasculino = new JMenuItem("Masculino");
+	                mntmMasculino.addActionListener(new ActionListener() {
+	                    public void actionPerformed(ActionEvent e) {
+	                        pesquisarRoupaPeloSexoMasculino();
+	                    }
+	                });
+	                mnNewMenu.add(mntmMasculino);
+	                
+	                JMenuItem mntmFeminino = new JMenuItem("Feminino");
+	                mntmFeminino.addActionListener(new ActionListener() {
+	                    public void actionPerformed(ActionEvent e) {
+	                        pesquisarRoupaPeloSexoFeminino();
+	                    }
+	                });
+	                mnNewMenu.add(mntmFeminino);
+	                
+	                JMenuItem mntmUnisex = new JMenuItem("Unisex");
+	                mntmUnisex.addActionListener(new ActionListener() {
+	                    public void actionPerformed(ActionEvent e) {
+	                        pesquisarRoupaPeloSexoUnisex();
+	                    }
+	                });
+	                mnNewMenu.add(mntmUnisex);
                 
                 JMenuItem mntmPorTamanho = new JMenuItem("Por Tamanho");
-                mntmPorTamanho.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
+                mntmPorTamanho.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
                 mntmPorTamanho.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         pesquisaRoupasPorTamanho();
@@ -147,7 +151,7 @@ public class JanelaPrincipal extends JFrame{
                 mnPesquisar.add(mntmPorTamanho);
                 
                 JMenuItem mntmPeloCdigoDe = new JMenuItem("Pelo Código de Barras");
-                mntmPeloCdigoDe.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
+                mntmPeloCdigoDe.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
                 mntmPeloCdigoDe.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         pesquisaRoupasPeloCodigoDeBarras();
@@ -162,31 +166,22 @@ public class JanelaPrincipal extends JFrame{
 
                 	}
                 });
-                mntmQuantidadeDeRoupas.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
+                mntmQuantidadeDeRoupas.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/search.png")));
+        		
                 mnPesquisar.add(mntmQuantidadeDeRoupas);
         
-        JButton btnRemover = new JButton("Remover");
-        btnRemover.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        btnRemover.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/delete.png")));
-        btnRemover.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                removerRoupa();
-            }
-        });
-        btnRemover.setBounds(172, 0, 98, 21);
-        getContentPane().add(btnRemover);
         
         JMenuBar menuBar_1 = new JMenuBar();
-        menuBar_1.setBounds(360, 0, 70, 21);
+        menuBar_1.setBounds(460, 0, 70, 21);
         
         getContentPane().add(menuBar_1);
         
         JMenu mnAjuda = new JMenu("Ajuda");
-        mnAjuda.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/help.png")));
+        mnAjuda.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/help.png")));
         menuBar_1.add(mnAjuda);
         
         JMenuItem mntmSobre = new JMenuItem("Sobre...");
-        mntmSobre.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/info.png")));
+        mntmSobre.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/info.png")));
         mntmSobre.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 sobre();
@@ -195,7 +190,7 @@ public class JanelaPrincipal extends JFrame{
         mnAjuda.add(mntmSobre);
         
         JMenuItem mntmSair = new JMenuItem("Sair");
-        mntmSair.setIcon(new ImageIcon(janela01.class.getResource("/javax/swing/plaf/metal/icons/ocean/close-pressed.gif")));
+        mntmSair.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/javax/swing/plaf/metal/icons/ocean/close-pressed.gif")));
         mntmSair.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             sairDoPrograma();
@@ -203,84 +198,194 @@ public class JanelaPrincipal extends JFrame{
         });
         mnAjuda.add(mntmSair);
         
-        JButton btnCadastrar = new JButton("Cadastrar");
-        btnCadastrar.setBounds(75, 0, 98, 21);
-        getContentPane().add(btnCadastrar);
-        btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        btnCadastrar.setIcon(new ImageIcon(janela01.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
-        
+          
         JMenuBar menuBar_2 = new JMenuBar();
-        menuBar_2.setBounds(0, 0, 75, 21);
+        menuBar_2.setBounds(0, 0, 80, 21);
         getContentPane().add(menuBar_2);
         
-        JMenu mnArquivo = new JMenu("Arquivo");
-        mnArquivo.setIcon(new ImageIcon("C:\\Users\\william\\Desktop\\Arquivos eclipse\\file.png"));
-        menuBar_2.add(mnArquivo);
+        JMenu mnRelatorio = new JMenu("Relatório");
+        mnRelatorio.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/list.png")));
+        menuBar_2.add(mnRelatorio);
         
-        JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
-        mntmCadastrar.setIcon(new ImageIcon(janela01.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
-        mntmCadastrar.addActionListener(new ActionListener() {
+        JMenuItem mntmRelatorioDia = new JMenuItem("Dia");
+        mntmRelatorioDia.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/file.png")));
+        mntmRelatorioDia.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-                cadastrarRoupa();
+                relatorioVendasDia();
 
         	}
         });
-        mnArquivo.add(mntmCadastrar);
+        mnRelatorio.add(mntmRelatorioDia);
         
-        JMenuItem mntmRemover = new JMenuItem("Remover");
-        mntmRemover.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/delete.png")));
-        mntmRemover.addActionListener(new ActionListener() {
+        JMenuItem mntmRelatorioMes = new JMenuItem("Mês");
+        mntmRelatorioMes.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/file.png")));
+        mntmRelatorioMes.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-                removerRoupa();
+        		relatorioVendasMes();
 
         	}
         });
-        mnArquivo.add(mntmRemover);
+		
+        mnRelatorio.add(mntmRelatorioMes);
         
-        JMenuItem mntmRecuperarRoupas = new JMenuItem("Recuperar Roupas");
-        mntmRecuperarRoupas.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/file.png")));
-        mntmRecuperarRoupas.addActionListener(new ActionListener() {
+        JMenuItem mntmRelatorioAno = new JMenuItem("Ano");
+        mntmRelatorioAno.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/file.png")));
+        mntmRelatorioAno.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		recuperaRoupas();
+        		relatorioVendasAno();
         	}
         });
-        mnArquivo.add(mntmRecuperarRoupas);
+        mnRelatorio.add(mntmRelatorioAno);
         
         JMenuItem mntmSair_1 = new JMenuItem("Sair");
-        mntmSair_1.setIcon(new ImageIcon(janela01.class.getResource("/javax/swing/plaf/metal/icons/ocean/close-pressed.gif")));
-        mntmSair_1.addActionListener(new ActionListener() {
+        mntmSair_1.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/javax/swing/plaf/metal/icons/ocean/close-pressed.gif")));
+        mntmSair_1.addActionListener(new ActionListener() {//j.setVisible(true);
+    		
         	public void actionPerformed(ActionEvent e) {
         		sairDoPrograma();
         	}
         });
-        mnArquivo.add(mntmSair_1);
+        mnRelatorio.add(mntmSair_1);
         
-        JLabel lblFundoprincipal = new JLabel("fundoPrincipal");
-        lblFundoprincipal.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/fundoNomeTelaPrincipal.jpg")));
-        lblFundoprincipal.setBounds(130, 157, 360, 40);
-        getContentPane().add(lblFundoprincipal);
-        
-        JLabel lblImagemprincipal = new JLabel("imagemPrincipal");
-        lblImagemprincipal.setIcon(new ImageIcon(janela01.class.getResource("/imagensProjeto/TelaPrincipal.png")));
-        lblImagemprincipal.setBounds(-112, 0, 776, 434);
-        getContentPane().add(lblImagemprincipal);
+        //Botões
+        JButton btnCadastrar = new JButton("Cadastro");
+        btnCadastrar.setBounds(176, 0, 98, 21);
+        getContentPane().add(btnCadastrar);
+        btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        btnCadastrar.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
         
         btnCadastrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cadastrarRoupa();
             }
         });
-
+        
+        JButton btnRemover = new JButton("Remover");
+        btnRemover.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        btnRemover.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/delete.png")));
+        
+        btnRemover.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+                removerRoupa();
+            }
+        });
+        btnRemover.setBounds(272, 0, 98, 21);
+        getContentPane().add(btnRemover);
+        
+        JButton btnComprar = new JButton("Compras");
+        btnComprar.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/shopping-cart-of-checkered-design.png")));
+        btnComprar.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        btnComprar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	comprarRoupa();
+        	}
+        });
+        btnComprar.setBounds(79, 0, 98, 21);
+        getContentPane().add(btnComprar);
+        
+        //Imagens Telas
+        JLabel lblFundo = new JLabel("fundo");
+        lblFundo.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/fundoNomeTelaPrincipal.jpg")));
+        lblFundo.setBounds(60, 170, 488, 67);
+        getContentPane().add(lblFundo);
+        
+        JLabel lblFundonomeprograma = new JLabel("fundoNomePrograma");
+        lblFundonomeprograma.setIcon(new ImageIcon(JanelaPrincipal.class.getResource("/imagensProjeto/TelaPrincipal.png")));
+        lblFundonomeprograma.setBounds(-138, -26, 823, 486);
+        getContentPane().add(lblFundonomeprograma);
+        
+           
     
+    }
+      
+      
+    private void relatorioVendasDia(){
+      	String dia = JOptionPane.showInputDialog("Digite aqui o dia: ");
+      	int d = 0;
+      	if(dia == null){
+    		
+    	}
+    	else{
+    		try{
+    			d = Integer.parseInt(dia);
+    		}catch(NumberFormatException e){
+    	 		JOptionPane.showMessageDialog(null,"ERRO");
+    				
+    		}
+    		//JOptionPane.showMessageDialog(null,gerenciador.rendaDiaria(d));
+    		for(int k=0; k<gravador.recuperarRelatorio().size(); k++){
+    			if(d == gravador.recuperarRelatorio().get(k).getDia() ){
+    				JOptionPane.showMessageDialog(null, gravador.recuperarRelatorio().get(k).toString()+" Renda total: R$ " + gerenciador.rendaDiaria(d));
+    				break;
+    			}
+    			//JOptionPane.showMessageDialog(null, gravador.recuperarRelatorio().get(k).toString()+" Renda total: R$ " + gerenciador.rendaDiaria(d));
+    		}
+    		
+    	}
+    }
     
+    private void relatorioVendasMes(){
+    	String mes = JOptionPane.showInputDialog("Digite aqui o dia: ");
+    	int m = 0;
+    	if(mes == null){
+    		
+    	}
+    	else{
+    		m = Integer.parseInt(mes);
+    		try{
+    			m = Integer.parseInt(mes);
+    		}catch(NumberFormatException e){
+    	 		JOptionPane.showMessageDialog(null,"ERRO");
+    				
+    		}
+    		for(int k=0; k<gravador.recuperarRelatorio().size(); k++){
+    			if(m == gravador.recuperarRelatorio().get(k).getMes() ){
+    				JOptionPane.showMessageDialog(null, gravador.recuperarRelatorio().get(k).toString() + " Renda total: R$ " + gerenciador.rendaMensal(m));
+    				break;
+    			}
+    		}
+		}
+    }
+    
+    private void relatorioVendasAno(){
+    	String ano = JOptionPane.showInputDialog("Digite aqui o dia: ");
+    	int a = 0;
+    	if(ano == null){
+    		
+    	}
+    	else{
+    		
+    		try{
+    			a = Integer.parseInt(ano);
+    		}catch(NumberFormatException e){
+    	 		JOptionPane.showMessageDialog(null,"ERRO");
+    				
+    		}
+    		for(int k=0; k<gravador.recuperarRelatorio().size(); k++){
+    			if(a == gravador.recuperarRelatorio().get(k).getAno() ){
+    				JOptionPane.showMessageDialog(null, gravador.recuperarRelatorio().get(k).toString() + " Renda total: R$ " + gerenciador.rendaAnual(a));
+    				break;
+    			}
+    		}
+    	}
     }
    
  
-
+    private void comprarRoupa(){
+    	
+    	JanelaDeCompras janelaCompras = new JanelaDeCompras(gerenciador);
+        janelaCompras.setSize(630, 460);
+        janelaCompras.setResizable(false);
+    	janelaCompras.setVisible(true);
+    	janelaCompras.setLocationRelativeTo(null);
+    	
+    	dispose();
+    }
     private void pesquisarTodasAsRoupas() {
          if(gerenciador.informaQuantidadeDeRoupasCadastradas() == 0){
                  JOptionPane.showMessageDialog(null, gerenciador.informaQuantidadeDeRoupasCadastradas()+" roupa(s) cadastrada(s)");
          }else{
+     		
         	 String texto = "\n";
         	 for(Roupas r : gerenciador.pesquisaRoupas()){
         		texto += r.toString() + "\n\n"; 
@@ -306,7 +411,7 @@ public class JanelaPrincipal extends JFrame{
          }
     }
     private void pesquisaRoupasPorFabricante() {
-        String fabricante = JOptionPane.showInputDialog("Informe o fabricante da roupa que deseja encontrar:");
+    	String fabricante = JOptionPane.showInputDialog("Informe o fabricante da roupa que deseja encontrar:");
         if(fabricante == null){
        	 
         }else{      
@@ -323,6 +428,7 @@ public class JanelaPrincipal extends JFrame{
         }
     }
     private void pesquisaRoupasPorTamanho() {
+		
         String tamanho = JOptionPane.showInputDialog("Informe o tamanho da roupa que deseja encontrar:");
         if(tamanho == null){
        	 
@@ -406,8 +512,9 @@ public class JanelaPrincipal extends JFrame{
     	    	  System.out.println(gravador.recuperaTextoDeArquivo("Roupas.txt").get(k));
     	      }
     	      }catch(IOException e){
-    	    	  
+    	    	  System.out.println(e.getMessage());
     	      }
+    	
     }
     private void sobre(){
         JOptionPane.showMessageDialog(null, "Programa de Gerenciamento de Estoque para Loja de Roupas\n\nPrograma criado por:\nAnderson Cosme dos Santos\nWelyson Jerônimo Santos\nReinaldo da Veiga Lima\n\nPrograma para a aula de POO ministrada pela professora\nAyla Débora Dantas de Souza Rebouças", "Sobre...", JOptionPane.PLAIN_MESSAGE);
@@ -421,7 +528,7 @@ public class JanelaPrincipal extends JFrame{
     	}
     	JanelaPrincipal j = new JanelaPrincipal(gerenciador);
  
-    	Janela2 janela2 = new Janela2(gerenciador);
+    	JanelaCadastraRoupas janela2 = new JanelaCadastraRoupas(gerenciador);
         janela2.setSize(630, 460);
         janela2.setResizable(false);
     	janela2.setVisible(true);
