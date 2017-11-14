@@ -27,8 +27,6 @@ public interface GerenciadorDeRoupas {
     
     public void valorTotalComprasEPreparaRelatorio(String codigo)throws CodigoDeBarrasInexistenteException;
     
-    public double comprasComPromocao(double promocao, double valorTotal) throws NumeroNegativoException;
-
     public double rendaDiaria(int dia);
 	
     public double rendaMensal(int mes);
