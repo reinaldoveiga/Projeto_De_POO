@@ -39,6 +39,8 @@ public class JanelaDeCompras extends JFrame {
 	 * Create the frame.
 	 */
 	public JanelaDeCompras(GerenciadorDeRoupasParaLojas gerenciador) {
+		this.gerenciador = gerenciador;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 661, 448);
 		contentPane = new JPanel();
@@ -47,8 +49,7 @@ public class JanelaDeCompras extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-		this.gerenciador = gerenciador;
-		
+		//Label Código de Barras
 		JLabel lblCdigoDeBarras = new JLabel(" Digite aqui o código de Barras\r\n para realizar a sua compra");
 		lblCdigoDeBarras.setFont(new Font("Arial", Font.BOLD, 13));
 		lblCdigoDeBarras.setBackground(Color.WHITE);
@@ -56,13 +57,7 @@ public class JanelaDeCompras extends JFrame {
 		lblCdigoDeBarras.setBounds(113, 11, 438, 64);
 		getContentPane().add(lblCdigoDeBarras);
 		
-
 		textCodigoDeBarras = new JTextField();
-		/*textCodigoDeBarras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			
-			}
-		});*/
 		textCodigoDeBarras.setBackground(Color.WHITE);
 		textCodigoDeBarras.setBounds(166, 152, 268, 19);
 		getContentPane().add(textCodigoDeBarras);
@@ -101,6 +96,7 @@ public class JanelaDeCompras extends JFrame {
 			btnVoltar.setBounds(446, 295, 117, 25);
 			getContentPane().add(btnVoltar);
 			
+			//Label imagens
 			JLabel lblFundocodigodebarras = new JLabel("fundoCodigoDeBarras");
 			lblFundocodigodebarras.setIcon(new ImageIcon(JanelaDeCompras.class.getResource("/imagensProjeto/cc3b3digo-inicial.png")));
 			lblFundocodigodebarras.setBounds(179, 77, 255, 52);
