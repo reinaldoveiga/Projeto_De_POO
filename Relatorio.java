@@ -1,17 +1,23 @@
 
 public class Relatorio{
 	
-	private int dia = 0;
-	private int mes = 0;
-	private int	ano = 0;
-	private double renda = 0;
+	private int dia;
+	private int mes;
+	private int ano;
+	private double renda;
 		
+	public Relatorio(){
+		this.dia = 0;
+		this.mes = 0;
+		this.ano = 0;
+		this.renda = 0.0;
+	}
+	
 	public Relatorio(int dia, int mes, int ano, double renda){
 		this.dia = dia;
 		this.mes = mes;
 		this.ano = ano;
-		this.renda = renda;
-		
+		this.renda = renda;	
 	}
 
 	public int getDia() {
