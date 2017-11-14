@@ -138,7 +138,7 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 	@Override
 	public void removeRoupas(String codigo) throws RoupaInexistenteException {
 		if (!(roupas.containsKey(codigo))) {
-			throw new RoupaInexistenteException("Não existe roupa com esse código: " + codigo);
+			throw new RoupaInexistenteException("Nao existe roupa com esse código: " + codigo);
 		}
 		this.roupas.remove(codigo);
 		gravador.gravaRoupas(pesquisaRoupas());
@@ -242,20 +242,6 @@ public class GerenciadorDeRoupasParaLojas implements GerenciadorDeRoupas {
 
 		}
 		
-	}
-	
-	@Override
-	public double comprasComPromocao(double promo, double valorTotal) throws NumeroNegativoException {
-		if (promo <= 0) {
-			throw new NumeroNegativoException("Não são permitidos números de 0 a menores!");
-		}
-
-		double valorX = (promo * 0.01);
-		double valorY = (valorX * valorTotal);
-		double valorZ = (valorTotal - valorY);
-		valorTotal = valorZ;
-
-		return valorTotal;
 	}
 
 	@Override
