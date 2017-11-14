@@ -1,8 +1,9 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,10 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
 
 public class JanelaDeCompras extends JFrame {
 
@@ -52,7 +49,7 @@ public class JanelaDeCompras extends JFrame {
 	
 		this.gerenciador = gerenciador;
 		
-		JLabel lblCdigoDeBarras = new JLabel(" Digite aqui o Código de Barras\r\n para realizar a sua compra");
+		JLabel lblCdigoDeBarras = new JLabel(" Digite aqui o código de Barras\r\n para realizar a sua compra");
 		lblCdigoDeBarras.setFont(new Font("Arial", Font.BOLD, 13));
 		lblCdigoDeBarras.setBackground(Color.WHITE);
 		lblCdigoDeBarras.setForeground(Color.WHITE);
@@ -87,8 +84,8 @@ public class JanelaDeCompras extends JFrame {
 			btnCarrinho.setIcon(new ImageIcon(JanelaDeCompras.class.getResource("/imagensProjeto/shopping-cart-of-checkered-design.png")));
 			btnCarrinho.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-				carrinhoDeCompras();
-				textCodigoDeBarras.setText("");
+					carrinhoDeCompras();
+					textCodigoDeBarras.setText("");
 				}
 			});
 			btnCarrinho.setBounds(217, 295, 198, 25);
@@ -130,7 +127,7 @@ public class JanelaDeCompras extends JFrame {
 			try{
 				gerenciador.valorTotalComprasEPreparaRelatorio(textCodigoDeBarras.getText().toString());
 						}catch(CodigoDeBarrasInexistenteException e){
-			
+							JOptionPane.showMessageDialog(null, e.getMessage());
 			}
 		}else if(opcao.equals("2")){
 			gerenciador.compraCarrinhoEPreparaRelatorio();
@@ -142,9 +139,8 @@ public class JanelaDeCompras extends JFrame {
 	private void carrinhoDeCompras(){
 		try{
     		gerenciador.comprasPorCodigoDeBarrasParaCarrinho(textCodigoDeBarras.getText().toString());
-    		
     	}catch(CodigoDeBarrasInexistenteException e){
-    		
+    		JOptionPane.showMessageDialog(null, e.getMessage());
     	}
 	}
 	
